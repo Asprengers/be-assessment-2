@@ -2,9 +2,10 @@
   "name": "bookadate",
   "version": "1.0.0",
   "description": "bookadate server",
+  "license":"MIT",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ."
   },
   "repository": {
     "type": "git",
