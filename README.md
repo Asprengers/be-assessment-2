@@ -2,7 +2,8 @@
 
 ## Install
 
-``` git clone https://github.com/Asprengers/be-assessment-2.git
+``` bash
+git clone https://github.com/Asprengers/be-assessment-2.git
 cd be-assessment-2
 npm install
 npm start
