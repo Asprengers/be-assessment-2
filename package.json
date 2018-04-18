@@ -2,7 +2,7 @@
   "name": "bookadate",
   "version": "1.0.0",
   "description": "bookadate server",
-  "license":"MIT",
+  "license": "ISC",
   "main": "index.js",
   "scripts": {
     "start": "node ."
@@ -12,7 +12,6 @@
     "url": "git+https://github.com/asprengers/be-assessment-2.git"
   },
   "author": "amy sprengers",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/asprengers/be-assessment-2/issues"
   },
