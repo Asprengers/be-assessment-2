@@ -3,8 +3,7 @@
 ## 1. Before installing
 
 install [NodeJS](https://nodejs.org/en/download/)
-install [MongoDB](https://docs.mongodb.com/manual/installation/)
-
+and install [MongoDB](https://docs.mongodb.com/manual/installation/)
 
 ## 2. Install
 
@@ -28,7 +27,7 @@ DB_USER=root
 SESSION_SECRET=books" >> .env
 ```
 
-##4 start
+## 4. start
 ```bash
 npm install
 npm start
