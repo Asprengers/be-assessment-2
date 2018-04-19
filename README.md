@@ -1,10 +1,10 @@
 # Book a date
 
 ## 1. Before installing
-``` bash
+
 install [NodeJS](https://nodejs.org/en/download/)
-2. install [MongoDB](https://docs.mongodb.com/manual/installation/)
-```
+install [MongoDB](https://docs.mongodb.com/manual/installation/)
+
 
 ## 2. Install
 
@@ -28,7 +28,7 @@ DB_USER=root
 SESSION_SECRET=books" >> .env
 ```
 
-#4 start
+##4 start
 ```bash
 npm install
 npm start
