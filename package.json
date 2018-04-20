@@ -1,12 +1,17 @@
 {
   "name": "bookadate",
   "version": "1.0.0",
-  "description": "bookadate server",
+  "description": "Dating app based on books to find your perfect match",
   "license": "ISC",
   "main": "index.js",
   "scripts": {
+    "watch": "nodemon server",
     "start": "node ."
   },
+  "keywords": [
+    "dating",
+    "books"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/asprengers/be-assessment-2.git"
@@ -15,5 +20,13 @@
   "bugs": {
     "url": "https://github.com/asprengers/be-assessment-2/issues"
   },
-  "homepage": "https://github.com/asprengers/be-assessment-2#readme"
+  "homepage": "https://github.com/asprengers/be-assessment-2#readme",
+  "dependencies": {
+    "argon2": "^0.18.0",
+    "array-find": "^1.0.0",
+    "ejs": "^2.5.9",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6"
+  },
+  "devDependencies": {}
 }

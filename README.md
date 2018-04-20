@@ -16,7 +16,7 @@ cd be-assessment-2
 ``` bash
 1. mkdir db
 2. mongod --dbpath db
-3. mongo
+3. new tab mongo
 4. use bookadate
 5. db.runCommand({ create: "users" })
 6. touch .env
