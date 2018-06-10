@@ -1,26 +1,30 @@
 <% include header.ejs %>
     <% include nav.ejs %>
         <% include status.ejs %>
+            <header class="top">
+                <h1>Mijn feed</h1>
+            </header>
             <% if (user) { %>
-
+                <p>
+                    <a href=/add><img alt="nieuwe match"  class="newmatch" src="images/plus.png"> </a>
+                </p>
                 <p>
                     <% for (var index = 0; index < data.length; index++) { %>
-                        <h2>
-                            <a href="/<%= data[index].id %>">
-                                <%= data[index].name %>
-                            </a>
-                        </h2>
-                        <h3>
-                            <%= data[index].bio %>
-                        </h3>
-
+                        <div class="feed">
+                            <h2>
+                                <a href="/<%= data[index].id %>">
+                                    <%= data[index].name %>
+                                </a>
+                            </h2>
+                            <h3>
+                                <%= data[index].bio %>
+                            </h3>
+                        </div>
                         <% } %>
                 </p>
                 <% } %>
 
                     <% if (user) { %>
-                        <p>
-                            <a href=/add>Add a movie</a>
-                        </p>
+
                         <% } %>
                             <% include footer.ejs %>

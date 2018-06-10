@@ -1,13 +1,17 @@
 <% include header.ejs %>
     <% include nav.ejs %>
         <% include status.ejs %>
+            <header class="top">
+                <h1>Mijn profiel</h1>
+            </header>
+
+
+
             <% if (user) { %>
                 <main>
                     <a class="button" href="instellingen.html">Instellingen</a>
                     <section>
-                        <h2>
-                            Naam
-                        </h2>
+
                         <img alt="profielfoto" src="images/img-person-placeholder.jpg">
 
                         <aside>
@@ -26,4 +30,5 @@
                     <a class="select" href="berichten.html">Mijn berichten </a>
                 </main>
                 <% } %>
+
                     <% include footer.ejs %>

@@ -42,6 +42,7 @@ h1 {
     font-size: 2.4em;
     text-align: center;
     color: #D4AF37;
+    margin-top: 46px;
 }
 
 h2 {
@@ -69,11 +70,14 @@ h3 {
     margin: 20px;
 }
 
-.index > p > a {
-    border-style: none;
-    color: white;
-    text-decoration: none;
-    background-color: #D4Af37;
+.afterhome > h1 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 2.4em;
+}
+
+.afterhome > a {
+
     width: 100%;
     height: 4em;
     align-content: center;
@@ -87,8 +91,7 @@ h3 {
     font-size: 1em;
     margin-top: 30px;
     padding: 20px;
-
-
+    text-decoration: none;
 }
 
 .registreren {
@@ -172,7 +175,7 @@ input[type=password] {
 }
 
 .buttonRemove {
-    width: 100%;
+    width: 49%;
     align-content: center;
     box-shadow: 0 0.250em 0.500em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.250em 0 rgba(0, 0, 0, 0.19);
     border: none;
@@ -183,7 +186,30 @@ input[type=password] {
     font-family: "backersville";
     padding-top: 10px;
     background: red;
-    color: white
+    color: white;
+    margin-top: 80px;
+
+}
+
+.buttons {
+    display: flex;
+}
+
+.chatbutton {
+    width: 49%;
+    align-content: center;
+    box-shadow: 0 0.250em 0.500em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.250em 0 rgba(0, 0, 0, 0.19);
+    border: none;
+    height: 40px;
+    text-align: center;
+    display: inline-block;
+    font-size: 1em;
+    font-family: "backersville";
+    padding-top: 10px;
+    background: green;
+    color: white;
+    margin-top: 80px;
+    margin-left: 10px;
 }
 
 img {
@@ -204,6 +230,7 @@ nav {
     box-shadow: 0 0.250em 0.500em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.250em 0 rgba(0, 0, 0, 0.19);
     z-index: 1;
 
+
 }
 
 nav img {
@@ -216,8 +243,9 @@ nav img {
     /*        font-size: 16px;*/
     /*    cursor: pointer;*/
     /*    margin: 4px;*/
-    margin-left: 14px;
+    margin-left: 26px;
     /*    margin-bottom: 0px;*/
+    left: 30px;
 }
 
 nav > a:nth-of-type(3n) img {
@@ -234,9 +262,40 @@ nav a.active {
 }
 
 .uitloggen {
-    position: fixed;
-    top: -16px;
+    position: absolute;
+    top: -17px;
     right: 0;
+    left: 69%;
     border: 3px solid #D4AF37;
     color: #D4AF37;
+    width: 150px;
+}
+
+.newmatch {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 45px;
+    top: 110px;
+
+}
+
+.feed {
+    /*    position: absolute;*/
+    /*    width: 100%;*/
+    /*    left: 45px;*/
+    border: 3px solid #D4AF37;
+    height: 200px;
+    margin-left: 45px;
+}
+
+.feed > h2,
+h3 {
+    color: black;
+    text-decoration: none;
+}
+
+.feed > h2 > a {
+    color: black;
+    text-decoration: none;
 }

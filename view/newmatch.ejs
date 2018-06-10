@@ -1,7 +1,14 @@
 <% include header.ejs %>
     <% include nav.ejs %>
         <% include status.ejs %>
-            <p>
-                <a href=/add>Add a match</a>
-            </p>
-            <% include footer.ejs %>
+            <header class="top">
+                <h1>Nieuwe match</h1>
+            </header>
+            <% if (user) { %>
+                <p>
+                    <a href=/add><img alt="nieuwe match"  class="newmatch" src="images/plus.png"> </a>
+                </p>
+
+                <% } %>
+
+                    <% include footer.ejs %>

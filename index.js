@@ -211,7 +211,7 @@ function signup(req, res, next) {
                 req.session.user = {
                     username: username
                 }
-                res.redirect('/')
+                res.redirect('/profile')
             }
         }
     }

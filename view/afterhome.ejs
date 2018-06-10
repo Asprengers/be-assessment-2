@@ -2,7 +2,17 @@
     <% include header.ejs %>
 
         <title>Book A Date</title>
-        <h1>Home</h1>
-        <% include status.ejs %>
-            <% include footer.ejs %>
+        <div class="afterhome">
+            <h1>Home</h1>
+            <% if (user) { %>
+                Hoi!
+                <%= user.username %>
+                    <a href=/log-out>Uitloggen</a>
+                    <% } else { %>
+                        <a href=/log-in> Inloggen</a>
+
+                        <a href=/sign-up>Registreren</a>
+                        <% } %>
+        </div>
+        <% include footer.ejs %>
 </body>
