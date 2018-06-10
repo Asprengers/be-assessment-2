@@ -11,7 +11,7 @@ and install [MongoDB](https://docs.mongodb.com/manual/installation/)
 git clone https://github.com/Asprengers/be-assessment-2.git
 cd be-assessment-2
 ```
-## 3. database setup
+## 3. Database setup
 
 ``` bash
 1. mkdir db
@@ -27,7 +27,7 @@ DB_USER=root
 SESSION_SECRET=books" >> .env
 ```
 
-## 4. start
+## 4. Start
 ```bash
 npm install
 npm start

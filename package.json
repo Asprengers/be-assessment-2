@@ -1,32 +1,37 @@
 {
-  "name": "bookadate",
-  "version": "1.0.0",
-  "description": "Dating app based on books to find your perfect match",
-  "license": "ISC",
-  "main": "index.js",
-  "scripts": {
-    "watch": "nodemon server",
-    "start": "node ."
-  },
-  "keywords": [
-    "dating",
-    "books"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/asprengers/be-assessment-2.git"
-  },
-  "author": "amy sprengers",
-  "bugs": {
-    "url": "https://github.com/asprengers/be-assessment-2/issues"
-  },
-  "homepage": "https://github.com/asprengers/be-assessment-2#readme",
-  "dependencies": {
-    "argon2": "^0.18.0",
-    "array-find": "^1.0.0",
-    "ejs": "^2.5.9",
-    "express": "^4.16.3",
-    "express-session": "^1.15.6"
-  },
-  "devDependencies": {}
+    "name": "bookadate",
+    "version": "1.0.0",
+    "description": "Dating app based on books to find your perfect match",
+    "license": "ISC",
+    "main": "index.js",
+    "scripts": {
+        "watch": "nodemon server",
+        "start": "node ."
+    },
+    "keywords": [
+        "dating",
+        "books"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/asprengers/be-assessment-2.git"
+    },
+    "author": "amy sprengers",
+    "bugs": {
+        "url": "https://github.com/asprengers/be-assessment-2/issues"
+    },
+    "homepage": "https://github.com/asprengers/be-assessment-2#readme",
+    "dependencies": {
+        "argon2": "^0.18.3",
+        "array-find": "^1.0.0",
+        "body-parser": "^1.18.3",
+        "dotenv": "^6.0.0",
+        "ejs": "^2.6.1",
+        "express": "^4.16.3",
+        "express-session": "^1.15.6",
+        "multer": "^1.3.0",
+        "mysql": "^2.15.0",
+        "slug": "^0.9.1"
+    },
+    "devDependencies": {}
 }
