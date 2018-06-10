@@ -8,7 +8,6 @@ var multer = require('multer')
 var mysql = require('mysql')
 var argon2 = require('argon2')
 
-
 require('dotenv').config()
 var connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -34,7 +33,12 @@ express()
     }))
     .set('view engine', 'ejs')
     .set('views', 'view')
+    .get('/afterhome', afterhome)
     .get('/', home)
+    .get('/chat', chat)
+    .get('/search', search)
+    .get('/newmatch', newmatch)
+    .get('/profile', profile)
     .post('/', upload.single('cover'), add)
     .get('/add', form)
     .get('/:id', match)
@@ -64,6 +68,22 @@ function home(req, res, next) {
 
 }
 
+function afterhome(req, res, next) {
+    connection.query('SELECT * FROM overzicht', done)
+
+    function done(err, data) {
+        if (err) {
+            next(err)
+        } else {
+            res.render('afterhome.ejs', {
+                data: data,
+                user: req.session.user
+            })
+        }
+
+    }
+
+}
 
 function match(req, res, next) {
     var id = req.params.id
@@ -240,7 +260,75 @@ function logout(req, res, next) {
         if (err) {
             next(err)
         } else {
-            res.redirect('/')
+            res.redirect('/afterhome')
         }
     })
+}
+
+function chat(req, res, next) {
+    connection.query('SELECT * FROM overzicht', done)
+
+    function done(err, data) {
+        if (err) {
+            next(err)
+        } else {
+            res.render('chat.ejs', {
+                data: data,
+                user: req.session.user
+            })
+        }
+
+    }
+
+}
+
+function profile(req, res, next) {
+    connection.query('SELECT * FROM overzicht', done)
+
+    function done(err, data) {
+        if (err) {
+            next(err)
+        } else {
+            res.render('profile.ejs', {
+                data: data,
+                user: req.session.user
+            })
+        }
+
+    }
+
+}
+
+function search(req, res, next) {
+    connection.query('SELECT * FROM overzicht', done)
+
+    function done(err, data) {
+        if (err) {
+            next(err)
+        } else {
+            res.render('search.ejs', {
+                data: data,
+                user: req.session.user
+            })
+        }
+
+    }
+
+}
+
+function newmatch(req, res, next) {
+    connection.query('SELECT * FROM overzicht', done)
+
+    function done(err, data) {
+        if (err) {
+            next(err)
+        } else {
+            res.render('newmatch.ejs', {
+                data: data,
+                user: req.session.user
+            })
+        }
+
+    }
+
 }

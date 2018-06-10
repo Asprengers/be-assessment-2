@@ -1,15 +1,18 @@
-<% include header.ejs %>
-    <title>Sign up - My movie website</title>
-    <h1>Sign up</h1>
-    <form action=/sign-up method=post>
-        <label>
-    Username
+<body class=registreren>
+    <% include header.ejs %>
+        <title>Sign up - My movie website</title>
+        <h1>Registreren</h1>
+        <form action=/sign-up method=post>
+            <label>
+    Gebruikersnaam
     <input name=username>
   </label>
-        <label>
-Password
+            <label>
+Wachtwoord
     <input name=password type=password>
   </label>
-        <button>Sign up</button>
-    </form>
-    <% include footer.ejs %>
+            <button>Registreren</button>
+        </form>
+        <p> <a class="terug" href="/"> Terug</a></p>
+        <% include footer.ejs %>
+</body>

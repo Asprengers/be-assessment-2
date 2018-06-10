@@ -1,0 +1,29 @@
+<% include header.ejs %>
+    <% include nav.ejs %>
+        <% include status.ejs %>
+            <% if (user) { %>
+                <main>
+                    <a class="button" href="instellingen.html">Instellingen</a>
+                    <section>
+                        <h2>
+                            Naam
+                        </h2>
+                        <img alt="profielfoto" src="images/img-person-placeholder.jpg">
+
+                        <aside>
+                            <p>Leeftijd</p>
+                            <p>Woonplaats</p>
+                            <p>Random feitje</p>
+                            <p>Op zoek naar</p>
+                        </aside>
+
+                        <p>Korte Biografie </p>
+
+
+                    </section>
+
+                    <a class="select" href="start.html">Mijn matches </a>
+                    <a class="select" href="berichten.html">Mijn berichten </a>
+                </main>
+                <% } %>
+                    <% include footer.ejs %>

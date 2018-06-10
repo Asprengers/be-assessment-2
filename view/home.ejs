@@ -1,32 +1,26 @@
 <% include header.ejs %>
-    <title>Book A Date</title>
-    <h1>Home</h1>
-    <p>
-        <% if (user) { %>
-            Hello
-            <%= user.username %>!
-                <a href=/log-out>Log out</a>
-                <% } else { %>
-                    <a href=/log-in> Login</a> or
-
-                    <a href=/sign-up>Sign up</a>
-                    <% } %>
-    </p>
-    <% for (var index = 0; index < data.length; index++) { %>
-        <h2>
-            <a href="/<%= data[index].id %>">
-                <%= data[index].name %>
-            </a>
-        </h2>
-        <p>
-            <%= data[index].bio %>
-        </p>
-
-        <% } %>
-
+    <% include nav.ejs %>
+        <% include status.ejs %>
             <% if (user) { %>
+
                 <p>
-                    <a href=/add>Add a movie</a>
+                    <% for (var index = 0; index < data.length; index++) { %>
+                        <h2>
+                            <a href="/<%= data[index].id %>">
+                                <%= data[index].name %>
+                            </a>
+                        </h2>
+                        <h3>
+                            <%= data[index].bio %>
+                        </h3>
+
+                        <% } %>
                 </p>
                 <% } %>
-                    <% include footer.ejs %>
+
+                    <% if (user) { %>
+                        <p>
+                            <a href=/add>Add a movie</a>
+                        </p>
+                        <% } %>
+                            <% include footer.ejs %>

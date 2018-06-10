@@ -1,0 +1,11 @@
+<p class="uitloggen">
+            <% if (user) { %>
+                Hoi!
+                <%= user.username %>
+                    <a href=/log-out>Uitloggen</a>
+                    <% } else { %>
+                        <a href=/log-in> Inloggen</a> or
+
+                        <a href=/sign-up>Registreren</a>
+                        <% } %>
+        </p>

@@ -1,15 +1,18 @@
-<% include header.ejs %>
-    <title>Log in - My movie website</title>
-    <h1>Log in</h1>
-    <form action=/log-in method=post>
-        <label>
-    Username
+<body class="registreren">
+    <% include header.ejs %>
+        <title>Inloggen</title>
+        <h1>Inloggen</h1>
+        <form action=/log-in method=post>
+            <label>
+   Gebruikersnaam
     <input name=username>
   </label>
-        <label>
-Password
+            <label>
+Wachtwoord
     <input name=password type=password>
   </label>
-        <button>Log in</button>
-    </form>
-    <% include footer.ejs %>
+            <button>Inloggen</button>
+        </form>
+        <p> <a class="terug" href="/"> Terug</a></p>
+        <% include footer.ejs %>
+</body>
