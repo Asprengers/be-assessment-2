@@ -2,18 +2,18 @@
 
 ## 1. Before installing
 
-- install [NodeJS](https://nodejs.org/en/download/)
-- install [mysql](https://dev.mysql.com/)
-- $ brew install mysql
-- $ npm init -y
-- $ npm install mysql dotenv
-- $ npm install express
-- $ npm install array-find
-- $ npm install ejs
-- $ npm install slug body-parser
-- $ npm install multer
-- $ npm install argon2
-- $ npm install express-session
+* install [NodeJS](https://nodejs.org/en/download/)
+* install [mysql](https://dev.mysql.com/)
+* $ brew install mysql
+* $ npm init -y
+* $ npm install mysql dotenv
+* $ npm install express
+* $ npm install array-find
+* $ npm install ejs
+* $ npm install slug body-parser
+* $ npm install multer
+* $ npm install argon2
+* $ npm install express-session
 
 ## 2. Install
 
@@ -58,4 +58,3 @@ npm install
 npm start
 ```
 [MIT License](https://github.com/Asprengers/be-assessment-2/blob/master/licence.md)  © 2018 [Amy Sprengers](https://github.com/Asprengers)
-
