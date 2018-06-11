@@ -134,6 +134,21 @@ function add(req, res, next) {
     }
 }
 
+//function test(req,res, next){
+//    if (!req.session.user){
+//        res.status(401).send('credentials required')
+//        return
+//    }
+//    connection.query('INSERT INTO')
+//}
+//CREATE TABLE IF NOT EXSITS profile (
+//id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+//firstname VARCHAR(30) NOT NULL,
+//books VARCHAR(30) NOT NULL,
+//biograph VARCHAR(50),
+//reg_date TIMESTAMP
+//)
+
 function remove(req, res, next) {
     var id = req.params.id
 

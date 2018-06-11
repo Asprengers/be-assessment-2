@@ -1,14 +1,87 @@
 <% include header.ejs %>
     <% include nav.ejs %>
         <% include status.ejs %>
-            <header class="top">
-                <h1>Nieuwe match</h1>
-            </header>
-            <% if (user) { %>
-                <p>
-                    <a href=/add><img alt="nieuwe match"  class="newmatch" src="images/plus.png"> </a>
-                </p>
 
-                <% } %>
+            <body onLoad="populate()">
+                <header class="top">
+                    <h1>Nieuwe match</h1>
+                </header>
+                <% if (user) { %>
+                    <p>
+                        <a href=/add><img alt="nieuwe match"  class="newmatch" src="images/plus.png"> </a>
+                    </p>
 
-                    <% include footer.ejs %>
+
+
+                    <form id="regForm">
+                        <!-- One "tab" for each step in the form: -->
+                        <div class="tab">
+                            <button type="button" id="prevBtn" class="ruimte" onclick="nextPrev(-1)">Vorige</button>
+                            <button type="button" id="nextBtn" class="ruimte" onclick="nextPrev(1)">Volgende</button>
+                            <h2 class="quiz-question1">Mijn favoriete genre is:
+                            </h2>
+                            <span class="quiz-answer1">
+      <label ><input type="radio" name="q1" onClick="saver(1,0)">Romantisch verhaal
+
+</label>
+
+      <label><input type="radio" name="q1" onClick="saver(1,4)">Horror verhaal
+</label>
+
+    </span>
+
+                        </div>
+                        <div class="tab">
+                            <button type="button" id="prevBtn" class="ruimte" onclick="nextPrev(-1)">Vorige</button>
+                            <button type="button" id="nextBtn" class="ruimte" onclick="nextPrev(1)">Volgende</button>
+                            <h2 class="quiz-question">Mijn favoriete boek is:
+                            </h2>
+                            <span class="quiz-answer2">
+      <label><input type="radio" name="q2" onClick="saver(2,0)"> <img src="images/book1.png"></label>
+      <label><input type="radio" name="q2" onClick="saver(2,4)"> <img src=images/book2.jpg></label>
+
+    </span>
+
+
+                        </div>
+                        <div class="tab">
+                            <button type="button" id="prevBtn" class="ruimte" onclick="nextPrev(-1)">Vorige</button>
+                            <button type="button" id="nextBtn" class="ruimte" onclick="nextPrev(1)">Volgende</button>
+                            <h2 class="quiz-question">Mijn favoriete auteur is
+                            </h2>
+                            <span class="quiz-answer">
+      <label><input type="radio" name="q3" onClick="saver(3,0)"> <img src="images/schrijver1.jpeg">
+
+</label>
+      <label><input type="radio" name="q3" onClick="saver(3,4)"><img src="images/schrijver2.jpg">
+
+</label>
+    </span>
+
+                        </div>
+
+
+                        <div class="tab" "get-result">
+
+
+                            <hr>
+
+                            <div class="result-box">
+                                <h3>Je score is</h3>
+                                <div id="result"></div>
+                                <input class="btn btn-primary" type="button" name="result" value="Bekijk resultaat" onClick="total()">
+                            </div>
+                        </div>
+
+
+                        <!-- Circles which indicates the steps of the form: -->
+                        <div style="text-align:center;margin-top:40px;">
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+
+                        </div>
+                    </form>
+                    <% } %>
+
+                        <% include footer.ejs %>
