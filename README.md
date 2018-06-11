@@ -25,31 +25,31 @@ cd be-assessment-2
 ## 3. Database setup
 
 ``` bash
-Brew install mysql
-Brew services start mysql
-Mysql -u root -p (enter your password)
-CREATE DATABASE IF NOT EXISTS matches;
-USE matches;
-CREATE TABLE IF NOT EXISTS overzicht (
+1. Brew install mysql
+2. Brew services start mysql
+3. Mysql -u root -p (enter your password)
+4. CREATE DATABASE IF NOT EXISTS matches;
+5. USE matches;
+6. CREATE TABLE IF NOT EXISTS overzicht (
   id INT NOT NULL AUTO_INCREMENT,
   name TEXT CHARACTER SET utf8,
   cover TEXT CHARACTER SET utf8,
   bio TEXT CHARACTER SET utf8,
-book TEXT CHARACTER SET utf8,
+  book TEXT CHARACTER SET utf8,
   PRIMARY KEY (id)
 );
-CREATE TABLE IF NOT EXISTS users (
+7. CREATE TABLE IF NOT EXISTS users (
   id INT NOT NULL AUTO_INCREMENT,
   username TEXT CHARACTER SET utf8,
   hash TEXT CHARACTER SET utf8,
   PRIMARY KEY (id)
 );
-touch .env
-echo "DB_HOST=localhost
-DB_USER=root
-DB_NAME=mymoviewebsite
+8. touch .env
+9. echo "DB_HOST=yourhost
+DB_USER=youruser
+DB_NAME=namedatabase
 DB_PASSWORD=mypassword
-SESSION_SECRET=ilikecats" >> .env
+SESSION_SECRET=yoursecret" >> .env
 ```
 
 ## 4. Start
