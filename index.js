@@ -35,22 +35,26 @@ express()
     .set('views', 'view')
     .get('/afterhome', afterhome)
     .get('/', home)
-    .get('/chat', chat)
+    .get('/chat/', chat)
     .get('/search', search)
     .get('/newmatch', newmatch)
     .get('/profile', profile)
     .post('/', upload.single('cover'), add)
+    .post('/chat/', newmes)
     .get('/add', form)
+    .get('/newmes/', message)
     .get('/:id', match)
+    .get('/chat/:id', bericht)
     .get('/sign-up', signupForm)
     .get('/log-in', loginForm)
     .post('/log-in', login)
     .get('/log-out', logout)
     .post('/sign-up', signup)
     .delete('/:id', remove)
+    .delete('/chat/:id', remover)
+
     .use(notFound)
     .listen(3000)
-
 function home(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -67,15 +71,14 @@ function home(req, res, next) {
     }
 
 }
-
-function afterhome(req, res, next) {
-    connection.query('SELECT * FROM overzicht', done)
+function chat(req, res, next) {
+    connection.query('SELECT * FROM chat', done)
 
     function done(err, data) {
         if (err) {
             next(err)
         } else {
-            res.render('afterhome.ejs', {
+            res.render('chat.ejs', {
                 data: data,
                 user: req.session.user
             })
@@ -84,7 +87,6 @@ function afterhome(req, res, next) {
     }
 
 }
-
 function match(req, res, next) {
     var id = req.params.id
     connection.query('SELECT * FROM overzicht WHERE id = ?', id, done)
@@ -103,7 +105,23 @@ function match(req, res, next) {
         }
     }
 }
+function bericht(req, res, next) {
+    var id = req.params.id
+    connection.query('SELECT * FROM chat WHERE id = ?', id, done)
 
+    function done(err, data) {
+        if (err) {
+            next(err)
+        } else if (data.length === 0) {
+            next()
+        } else {
+            res.render('bericht.ejs', {
+                data: data[0],
+                user: req.session.user
+            })
+        }
+    }
+}
 function form(req, res) {
     if (req.session.user) {
         res.render('add.ejs')
@@ -112,7 +130,13 @@ function form(req, res) {
     }
 
 }
-
+function message(req, res){
+  if (req.session.user) {
+      res.render('newmes.ejs')
+  } else {
+      res.status(401).send('Credentials required')
+  }
+}
 function add(req, res, next) {
     if (!req.session.user) {
         res.status(401).send('Credentials required')
@@ -133,22 +157,24 @@ function add(req, res, next) {
         }
     }
 }
+function newmes(req, res){
+  if (!req.session.user) {
+      res.status(401).send('Credentials required')
+      return
+  }
+  connection.query('INSERT INTO chat SET ?', {
+      Subject: req.body.Subject,
+      message: req.body.message
+  }, done)
 
-//function test(req,res, next){
-//    if (!req.session.user){
-//        res.status(401).send('credentials required')
-//        return
-//    }
-//    connection.query('INSERT INTO')
-//}
-//CREATE TABLE IF NOT EXSITS profile (
-//id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-//firstname VARCHAR(30) NOT NULL,
-//books VARCHAR(30) NOT NULL,
-//biograph VARCHAR(50),
-//reg_date TIMESTAMP
-//)
-
+  function done(err, data) {
+      if (err) {
+          next(err)
+      } else {
+          res.redirect('/chat/' + data.insertId)
+      }
+  }
+}
 function remove(req, res, next) {
     var id = req.params.id
 
@@ -164,16 +190,44 @@ function remove(req, res, next) {
         }
     }
 }
+function remover(req, res, next) {
+    var id = req.params.id
 
+    connection.query('DELETE FROM chat WHERE id = ?', id, done)
+
+    function done(err) {
+        if (err) {
+            next(err)
+        } else {
+            res.json({
+                status: 'ok'
+            })
+        }
+    }
+}
+function afterhome(req, res, next) {
+    connection.query('SELECT * FROM overzicht', done)
+
+    function done(err, data) {
+        if (err) {
+            next(err)
+        } else {
+            res.render('afterhome.ejs', {
+                data: data,
+                user: req.session.user
+            })
+        }
+
+    }
+
+}
 function notFound(req, res) {
 
     res.status(404).render('not-found.ejs')
 }
-
 function signupForm(req, res) {
     res.render('sign-up.ejs')
 }
-
 function signup(req, res, next) {
     var username = req.body.username
     var password = req.body.password
@@ -231,11 +285,9 @@ function signup(req, res, next) {
         }
     }
 }
-
 function loginForm(req, res) {
     res.render('log-in.ejs')
 }
-
 function login(req, res, next) {
     var username = req.body.username
     var password = req.body.password
@@ -269,7 +321,6 @@ function login(req, res, next) {
         }
     }
 }
-
 function logout(req, res, next) {
     req.session.destroy(function (err) {
         if (err) {
@@ -279,24 +330,6 @@ function logout(req, res, next) {
         }
     })
 }
-
-function chat(req, res, next) {
-    connection.query('SELECT * FROM overzicht', done)
-
-    function done(err, data) {
-        if (err) {
-            next(err)
-        } else {
-            res.render('chat.ejs', {
-                data: data,
-                user: req.session.user
-            })
-        }
-
-    }
-
-}
-
 function profile(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -313,7 +346,6 @@ function profile(req, res, next) {
     }
 
 }
-
 function search(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -330,7 +362,6 @@ function search(req, res, next) {
     }
 
 }
-
 function newmatch(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 

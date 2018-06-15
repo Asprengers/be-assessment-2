@@ -1,14 +1,27 @@
-<% include header.ejs %>
-    <% include nav.ejs %>
-        <% include status.ejs %>
-            <header class="top">
-                <h1>Chats</h1>
-            </header>
-            <% if (user) { %>
+                                <% include header.ejs %>
+                                    <% include nav.ejs %>
+                                        <% include status.ejs %>
+                                            <header class="top">
+                                                <h1>Mijn berichten</h1>
+                                            </header>
+                                            <% if (user) { %>
 
-                <p>
-                    <a href=/add><img alt="nieuwe match"  class="newmatch" src="images/plus.png"> </a>
-                </p>
-                <% } %>
 
-                    <% include footer.ejs %>
+                                                <p>
+                                                    <% for (var index = 0; index < data.length; index++) { %>
+                                                        <div class="feed">
+                                                            <h2>
+                                                                <a href="/chat/<%= data[index].id %>">
+                                                                    <%= data[index].Subject %>
+                                                                </a>
+                                                            </h2>
+                                                            <h3>
+                                                                <%= data[index].message %>
+                                                            </h3>
+                                                        </div>
+                                                        <% } %>
+                                                </p>
+                                                <% } %>
+
+
+                                                            <% include footer.ejs %>

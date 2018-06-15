@@ -30,6 +30,36 @@ function onremove(ev) {
     }
 }
 
+var remover = document.getElementById('remover-message')
+
+if (remover) {
+    remover.addEventListener('click', onremover)
+}
+
+function onremover(ev) {
+    var node = ev.target
+    var id = node.dataset.id
+
+    fetch('/chat/' + id, {
+            method: 'delete'
+        })
+        .then(onresponse)
+        .then(onload, onfail)
+
+    function onresponse(res) {
+        return res.json()
+    }
+
+    function onload() {
+        window.location = '/chat'
+    }
+
+    function onfail() {
+        throw new Error('Could not delete!')
+    }
+}
+
+
 
 var body = document.body
 var Quest = new Array(10); //this sets up an array for all of the answers that are given

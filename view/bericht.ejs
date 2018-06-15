@@ -1,0 +1,26 @@
+<% include header.ejs %>
+    <% include nav.ejs %>
+        <title>
+            <%= data.id %> - Book A Date</title>
+        <h1>
+            <%= data.id %>
+        </h1>
+        <div class="feed">
+          <p>
+              <%= data.Subject %>
+          </p>
+                    <p>
+                        <%= data.message %>
+                    </p>
+                    <% if (user) { %>
+
+                        <p class="buttons">
+                          <button id=remover-message data-id="<%= data.id %>" class=buttonRemove>Remove</button>
+
+                            <button class="chatbutton"> Chat</button>
+                        </p>
+                        <% } %>
+        </div>
+        <p> <a href="/"> Terug</a></p>
+
+        <% include footer.ejs %>

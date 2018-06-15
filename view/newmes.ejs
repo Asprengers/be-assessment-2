@@ -1,0 +1,15 @@
+<% include header.ejs %>
+    <% include nav.ejs %>
+
+<h1>stuur bericht</h1>
+<form action=/chat method=post>
+ <label>Title <input name=Subject></label>
+ <label>
+Plot (short)
+   <input name=message>
+ </label>
+ <button>Add</button>
+</form>
+
+        <p> <a href="/"> Terug</a></p>
+        <% include footer.ejs %>
