@@ -44,8 +44,14 @@ cd be-assessment-2
   hash TEXT CHARACTER SET utf8,
   PRIMARY KEY (id)
 );
-8. touch .env
-9. echo "DB_HOST=yourhost
+8. CREATE TABLE IF NOT EXISTS chat (
+  id INT NOT NULL AUTO_INCREMENT,
+  Subject TEXT CHARACTER SET utf8,
+  message TEXT CHARACTER SET utf8,
+  PRIMARY KEY (id)
+);
+9. touch .env
+10. echo "DB_HOST=yourhost
 DB_USER=youruser
 DB_NAME=namedatabase
 DB_PASSWORD=mypassword
