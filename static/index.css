@@ -97,7 +97,7 @@ h3 {
 .registreren {
     color: white;
     background-image: url(../images/cover.jpg);
-    height: 42em;
+    height: 100em;
     background-repeat: no-repeat;
     background-size: cover;
     border: #D4AF37 3px solid;
@@ -477,4 +477,5 @@ input[type=radio] {
 input[type=checkbox] {
     -webkit-appearance: checkbox;
 }
+
 /*tot hier*/

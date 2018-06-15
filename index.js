@@ -21,6 +21,10 @@ var upload = multer({
     dest: 'static/upload/'
 })
 
+var profielfotos = multer({
+    dest: 'static/profielfoto/'
+})
+
 express()
     .use(express.static('static'))
     .use(bodyParser.urlencoded({
@@ -41,6 +45,7 @@ express()
     .get('/profile', profile)
     .post('/', upload.single('cover'), add)
     .post('/chat/', newmes)
+    .post('/profile/', profielfotos.single('profielfoto'), signup)
     .get('/add', form)
     .get('/newmes/', message)
     .get('/:id', match)
@@ -52,9 +57,9 @@ express()
     .post('/sign-up', signup)
     .delete('/:id', remove)
     .delete('/chat/:id', remover)
-
     .use(notFound)
     .listen(3000)
+
 function home(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -71,6 +76,7 @@ function home(req, res, next) {
     }
 
 }
+
 function chat(req, res, next) {
     connection.query('SELECT * FROM chat', done)
 
@@ -87,6 +93,7 @@ function chat(req, res, next) {
     }
 
 }
+
 function match(req, res, next) {
     var id = req.params.id
     connection.query('SELECT * FROM overzicht WHERE id = ?', id, done)
@@ -105,6 +112,7 @@ function match(req, res, next) {
         }
     }
 }
+
 function bericht(req, res, next) {
     var id = req.params.id
     connection.query('SELECT * FROM chat WHERE id = ?', id, done)
@@ -122,6 +130,7 @@ function bericht(req, res, next) {
         }
     }
 }
+
 function form(req, res) {
     if (req.session.user) {
         res.render('add.ejs')
@@ -130,13 +139,15 @@ function form(req, res) {
     }
 
 }
-function message(req, res){
-  if (req.session.user) {
-      res.render('newmes.ejs')
-  } else {
-      res.status(401).send('Credentials required')
-  }
+
+function message(req, res) {
+    if (req.session.user) {
+        res.render('newmes.ejs')
+    } else {
+        res.status(401).send('Credentials required')
+    }
 }
+
 function add(req, res, next) {
     if (!req.session.user) {
         res.status(401).send('Credentials required')
@@ -151,30 +162,33 @@ function add(req, res, next) {
 
     function done(err, data) {
         if (err) {
+
             next(err)
         } else {
             res.redirect('/' + data.insertId)
         }
     }
 }
-function newmes(req, res){
-  if (!req.session.user) {
-      res.status(401).send('Credentials required')
-      return
-  }
-  connection.query('INSERT INTO chat SET ?', {
-      Subject: req.body.Subject,
-      message: req.body.message
-  }, done)
 
-  function done(err, data) {
-      if (err) {
-          next(err)
-      } else {
-          res.redirect('/chat/' + data.insertId)
-      }
-  }
+function newmes(req, res) {
+    if (!req.session.user) {
+        res.status(401).send('Credentials required')
+        return
+    }
+    connection.query('INSERT INTO chat SET ?', {
+        Subject: req.body.Subject,
+        message: req.body.message
+    }, done)
+
+    function done(err, data) {
+        if (err) {
+            next(err)
+        } else {
+            res.redirect('/chat/' + data.insertId)
+        }
+    }
 }
+
 function remove(req, res, next) {
     var id = req.params.id
 
@@ -190,6 +204,7 @@ function remove(req, res, next) {
         }
     }
 }
+
 function remover(req, res, next) {
     var id = req.params.id
 
@@ -205,6 +220,7 @@ function remover(req, res, next) {
         }
     }
 }
+
 function afterhome(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -221,26 +237,31 @@ function afterhome(req, res, next) {
     }
 
 }
+
 function notFound(req, res) {
 
     res.status(404).render('not-found.ejs')
 }
+
+//registratie
 function signupForm(req, res) {
     res.render('sign-up.ejs')
 }
+
 function signup(req, res, next) {
-    var username = req.body.username
-    var password = req.body.password
-    var min = 8
+    var gebruikersnaam = req.body.gebruikersnaam
+    var wachtwoord = req.body.wachtwoord
+
+    var min = 2
     var max = 160
-    if (!username || !password) {
+    if (!gebruikersnaam || !wachtwoord) {
         res
             .status(400)
             .send('Username or password are missing')
         return
 
     }
-    if (password.length < min || password.length > max) {
+    if (wachtwoord.length < min || wachtwoord.length > max) {
         res
             .status(400)
             .send(
@@ -248,11 +269,11 @@ function signup(req, res, next) {
                 ' and ' + max + ' characters'
             )
         return
-
     }
+
     connection.query(
-        'SELECT * FROM users WHERE username = ?',
-        username,
+        'SELECT * FROM profiel WHERE gebruikersnaam = ?',
+        gebruikersnaam,
         done
     )
 
@@ -262,14 +283,26 @@ function signup(req, res, next) {
         } else if (data.length !== 0) {
             res.status(409).send('Username already in use')
         } else {
-            argon2.hash(password).then(onhash, next)
+            argon2.hash(wachtwoord).then(onhash, next)
         }
     }
 
     function onhash(hash) {
-        connection.query('INSERT INTO users SET ?', {
-            username: username,
-            hash: hash
+        connection.query('INSERT INTO profiel SET ?', {
+            gebruikersnaam: gebruikersnaam,
+            hash: hash,
+            voornaam: req.body.voornaam,
+            achternaam: req.body.achternaam,
+            email: req.body.email,
+            leeftijd: req.body.leeftijd,
+            minLeeftijd: req.body.minLeeftijd,
+            maxLeeftijd: req.body.maxLeeftijd,
+            geslacht: req.body.geslacht,
+            voorkeur: req.body.voorkeur,
+            profielfoto: req.file ? req.file.filename : null,
+            boek: req.body.boek,
+            schrijfer: req.body.schrijfer,
+            quote: req.body.quote
         }, oninsert)
 
         function oninsert(err) {
@@ -278,25 +311,29 @@ function signup(req, res, next) {
             } else {
                 // Signed up!
                 req.session.user = {
-                    username: username
+                    gebruikersnaam: gebruikersnaam
                 }
-                res.redirect('/profile')
+                res.redirect('/profile/')
             }
+
+
         }
     }
 }
+
 function loginForm(req, res) {
     res.render('log-in.ejs')
 }
-function login(req, res, next) {
-    var username = req.body.username
-    var password = req.body.password
 
-    if (!username || !password) {
+function login(req, res, next) {
+    var gebruikersnaam = req.body.gebruikersnaam
+    var wachtwoord = req.body.wachtwoord
+
+    if (!gebruikersnaam || !wachtwoord) {
         return res.status(400).send('Username or password are missing')
     }
 
-    connection.query('SELECT * FROM users WHERE username = ?', username, done)
+    connection.query('SELECT * FROM profiel WHERE gebruikersnaam = ?', gebruikersnaam, done)
 
     function done(err, data) {
         var user = data && data[0]
@@ -304,7 +341,7 @@ function login(req, res, next) {
         if (err) {
             next(err)
         } else if (user) {
-            argon2.verify(user.hash, password).then(onverify, next)
+            argon2.verify(user.hash, wachtwoord).then(onverify, next)
         } else {
             res.status(401).send('Username does not exist')
         }
@@ -312,7 +349,7 @@ function login(req, res, next) {
         function onverify(match) {
             if (match) {
                 req.session.user = {
-                    username: user.username
+                    gebruikersnaam: user.gebruikersnaam
                 };
                 res.redirect('/')
             } else {
@@ -321,6 +358,7 @@ function login(req, res, next) {
         }
     }
 }
+
 function logout(req, res, next) {
     req.session.destroy(function (err) {
         if (err) {
@@ -330,8 +368,10 @@ function logout(req, res, next) {
         }
     })
 }
+
+//overig
 function profile(req, res, next) {
-    connection.query('SELECT * FROM overzicht', done)
+    connection.query('SELECT * FROM profiel', done)
 
     function done(err, data) {
         if (err) {
@@ -346,6 +386,7 @@ function profile(req, res, next) {
     }
 
 }
+
 function search(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -362,6 +403,7 @@ function search(req, res, next) {
     }
 
 }
+
 function newmatch(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 

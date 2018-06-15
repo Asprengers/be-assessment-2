@@ -1,34 +1,24 @@
 <% include header.ejs %>
     <% include nav.ejs %>
-        <% include status.ejs %>
-            <header class="top">
-                <h1>Mijn profiel</h1>
-            </header>
-
-
-
-            <% if (user) { %>
-                <main>
-                    <a class="button" href="instellingen.html">Instellingen</a>
-                    <section>
-
-                        <img alt="profielfoto" src="images/img-person-placeholder.jpg">
-
-                        <aside>
-                            <p>Leeftijd</p>
-                            <p>Woonplaats</p>
-                            <p>Random feitje</p>
-                            <p>Op zoek naar</p>
-                        </aside>
-
-                        <p>Korte Biografie </p>
-
-
-                    </section>
-
-                    <a class="select" href="start.html">Mijn matches </a>
-                    <a class="select" href="berichten.html">Mijn berichten </a>
-                </main>
+        <title>
+            <%= data.gebruikersnaam %> - Book A Date</title>
+        <h1>
+            <%= data.gebruikersnaam %>
+        </h1>
+        <div class="feed">
+            <% if (data.profielfoto) { %>
+                <img alt src="/profielfoto/<%= data.profielfoto %>">
                 <% } %>
+                    <p>
+                        <%= data.gebruikersnaam %>
+                    </p>
+                    <% if (user) { %>
 
-                    <% include footer.ejs %>
+                        <p class="buttons">
+                            <button class="chatbutton"> Chat</button>
+                        </p>
+                        <% } %>
+        </div>
+        <p> <a href="/"> Terug</a></p>
+
+        <% include footer.ejs %>

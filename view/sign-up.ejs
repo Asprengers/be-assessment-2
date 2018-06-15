@@ -1,17 +1,36 @@
 <body class=registreren>
     <% include header.ejs %>
-        <title>Sign up - My movie website</title>
+        <title>Registreren - Book A Date </title>
         <h1>Registreren</h1>
-        <form action=/sign-up method=post>
+        <form action=/profile method=post enctype=multipart/form-data>
             <label>
     Gebruikersnaam
-    <input name=username>
+    <input name=gebruikersnaam>
   </label>
             <label>
 Wachtwoord
-    <input name=password type=password>
+    <input name=wachtwoord type=password>
   </label>
-            <button>Registreren</button>
+            <label>
+Email
+    <input name=email type=email>
+
+  </label>
+            <label>
+voornaam
+    <input name=voornaam type=voornaam>
+  </label>
+            <label> achternaam <input name=achternaam type=achternaam> </label>
+            <label> leeftijd <input name=leeftijd type=leeftijd> </label>
+            <label> minLeeftijd <input name=minLeeftijd type=minLeeftijd> </label>
+            <label> maxLeeftijd <input name=maxLeeftijd type=minLeeftijd> </label>
+            <label> geslacht <input name=geslacht type=geslacht> </label>
+            <label> voorkeur <input name=voorkeur type=voorkeur> </label>
+            <label> profielfoto <input name=profielfoto  type=file accept=image/*> </label>
+            <label> boek <input name=boek type=boek> </label>
+            <label> schrijfer <input name=schrijfer type=schrijfer> </label>
+            <label> quote <input name=quote type=quote> </label>
+            <button> Registreren</button>
         </form>
         <p> <a class="terug" href="/afterhome"> Terug</a></p>
         <% include footer.ejs %>
