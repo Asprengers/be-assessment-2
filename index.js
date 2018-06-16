@@ -43,6 +43,7 @@ express()
     .get('/search', search)
     .get('/newmatch', newmatch)
     .get('/profile', profile)
+    .get('/editmatch', editmatch)
     .post('/', upload.single('cover'), add)
     .post('/chat/', newmes)
     .post('/profile/', profielfotos.single('profielfoto'), signup)
@@ -50,6 +51,7 @@ express()
     .get('/newmes/', message)
     .get('/:id', match)
     .get('/chat/:id', bericht)
+    .post('/edit', edit)
     .get('/sign-up', signupForm)
     .get('/log-in', loginForm)
     .post('/log-in', login)
@@ -75,6 +77,37 @@ function home(req, res, next) {
 
     }
 
+}
+
+function editmatch(req, res) {
+  var id = req.params.id
+    connection.query('SELECT * FROM overzicht SET ? WHERE ID = ?', done)
+
+    function done(err, data) {
+            res.render('editmatch.ejs', {
+                data: data
+            })
+        }
+
+    }
+function edit (req, res, next){
+  if (!req.session.user) {
+        res.status(401).send('Credentials required')
+        return
+    }
+
+    connection.query('UPDATE overzicht SET ? WHERE ID = ?', {
+      name: req.body.name,
+      cover: req.file ? req.file.filename : null,
+      bio: req.body.bio,
+      book: req.body.book
+    }, done)
+
+      function done(err, data) {
+        res.redirect('/')
+        // data: data[0],
+        // user: req.session.user
+    }
 }
 function match(req, res, next) {
     var id = req.params.id
