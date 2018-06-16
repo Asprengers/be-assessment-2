@@ -59,7 +59,7 @@ express()
     .delete('/chat/:id', remover)
     .use(notFound)
     .listen(3000)
-
+//matches
 function home(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -76,24 +76,6 @@ function home(req, res, next) {
     }
 
 }
-
-function chat(req, res, next) {
-    connection.query('SELECT * FROM chat', done)
-
-    function done(err, data) {
-        if (err) {
-            next(err)
-        } else {
-            res.render('chat.ejs', {
-                data: data,
-                user: req.session.user
-            })
-        }
-
-    }
-
-}
-
 function match(req, res, next) {
     var id = req.params.id
     connection.query('SELECT * FROM overzicht WHERE id = ?', id, done)
@@ -112,25 +94,6 @@ function match(req, res, next) {
         }
     }
 }
-
-function bericht(req, res, next) {
-    var id = req.params.id
-    connection.query('SELECT * FROM chat WHERE id = ?', id, done)
-
-    function done(err, data) {
-        if (err) {
-            next(err)
-        } else if (data.length === 0) {
-            next()
-        } else {
-            res.render('bericht.ejs', {
-                data: data[0],
-                user: req.session.user
-            })
-        }
-    }
-}
-
 function form(req, res) {
     if (req.session.user) {
         res.render('add.ejs')
@@ -139,15 +102,6 @@ function form(req, res) {
     }
 
 }
-
-function message(req, res) {
-    if (req.session.user) {
-        res.render('newmes.ejs')
-    } else {
-        res.status(401).send('Credentials required')
-    }
-}
-
 function add(req, res, next) {
     if (!req.session.user) {
         res.status(401).send('Credentials required')
@@ -169,7 +123,63 @@ function add(req, res, next) {
         }
     }
 }
+function remove(req, res, next) {
+    var id = req.params.id
 
+    connection.query('DELETE FROM overzicht WHERE id = ?', id, done)
+
+    function done(err) {
+        if (err) {
+            next(err)
+        } else {
+            res.json({
+                status: 'ok'
+            })
+        }
+    }
+}
+
+//chat
+function chat(req, res, next) {
+    connection.query('SELECT * FROM chat', done)
+
+    function done(err, data) {
+        if (err) {
+            next(err)
+        } else {
+            res.render('chat.ejs', {
+                data: data,
+                user: req.session.user
+            })
+        }
+
+    }
+
+}
+function bericht(req, res, next) {
+    var id = req.params.id
+    connection.query('SELECT * FROM chat WHERE id = ?', id, done)
+
+    function done(err, data) {
+        if (err) {
+            next(err)
+        } else if (data.length === 0) {
+            next()
+        } else {
+            res.render('bericht.ejs', {
+                data: data[0],
+                user: req.session.user
+            })
+        }
+    }
+}
+function message(req, res) {
+    if (req.session.user) {
+        res.render('newmes.ejs')
+    } else {
+        res.status(401).send('Credentials required')
+    }
+}
 function newmes(req, res) {
     if (!req.session.user) {
         res.status(401).send('Credentials required')
@@ -188,23 +198,6 @@ function newmes(req, res) {
         }
     }
 }
-
-function remove(req, res, next) {
-    var id = req.params.id
-
-    connection.query('DELETE FROM overzicht WHERE id = ?', id, done)
-
-    function done(err) {
-        if (err) {
-            next(err)
-        } else {
-            res.json({
-                status: 'ok'
-            })
-        }
-    }
-}
-
 function remover(req, res, next) {
     var id = req.params.id
 
@@ -237,7 +230,6 @@ function afterhome(req, res, next) {
     }
 
 }
-
 function notFound(req, res) {
 
     res.status(404).render('not-found.ejs')
@@ -247,7 +239,6 @@ function notFound(req, res) {
 function signupForm(req, res) {
     res.render('sign-up.ejs')
 }
-
 function signup(req, res, next) {
     var gebruikersnaam = req.body.gebruikersnaam
     var wachtwoord = req.body.wachtwoord
@@ -320,11 +311,9 @@ function signup(req, res, next) {
         }
     }
 }
-
 function loginForm(req, res) {
     res.render('log-in.ejs')
 }
-
 function login(req, res, next) {
     var gebruikersnaam = req.body.gebruikersnaam
     var wachtwoord = req.body.wachtwoord
@@ -358,7 +347,6 @@ function login(req, res, next) {
         }
     }
 }
-
 function logout(req, res, next) {
     req.session.destroy(function (err) {
         if (err) {
@@ -386,7 +374,6 @@ function profile(req, res, next) {
     }
 
 }
-
 function search(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -403,7 +390,6 @@ function search(req, res, next) {
     }
 
 }
-
 function newmatch(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
