@@ -65,6 +65,7 @@ npm start
 ```
 
 ## 5. To list
+```bash
 [x] git npm database node are used
 [x] user can sign up
 [x] user can log in
@@ -82,5 +83,6 @@ npm start
 [] search function
 [] profielen weergeven
 [] relaties weergeven
+```
 
 [MIT License](https://github.com/Asprengers/be-assessment-2/blob/master/licence.md)  © 2018 [Amy Sprengers](https://github.com/Asprengers)
