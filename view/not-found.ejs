@@ -1,22 +1,16 @@
 <% include header.ejs %>
-
-    <nav>
-        <a href=/>
-        <img src="images/rss.png"></a>
-        <a href=/search> <img src="images/search.png"></a>
-        <a href=/add>
-    <img src="images/album.png"></a>
-        <a href=/chat>
-    <img src="images/chat.png"></a>
-        <a href=/profile> <img src="/images/user.png"></a>
-    </nav>
+    <% include nav.ejs %>
 
 
-    <title>404 - not found</title>
-    <header class="top">
-        <h1>Error</h1>
-    </header>
-    <p>Helaas is hier niets</p>
+          <header class="top">
+            <title>404 - not found</title>
+
+                <h1>Error</h1>
+            </header>
+
+    <p>Helaas is hier niets gevonden</p>
+
+    <p> <a class="home" href="/"> Home</a></p>
 
 
     <% include footer.ejs %>
