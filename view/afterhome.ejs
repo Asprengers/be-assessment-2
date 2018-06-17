@@ -1,18 +1,10 @@
 <body class="index">
     <% include header.ejs %>
-
-        <title>Book A Date</title>
-        <div class="afterhome">
-            <h1>Book A Date</h1>
-            <% if (user) { %>
-                Hoi!
-                <%= user.username %>
-                    <a href=/log-out>Uitloggen</a>
-                    <% } else { %>
-                        <a href=/log-in> Inloggen</a>
-
-                        <a href=/sign-up>Registreren</a>
-                        <% } %>
-        </div>
+<title>Book A Date</title>
+<div class="afterhome">
+<h1>Book A Date</h1>
+  <a href=/log-in> Inloggen</a>
+  <a href=/sign-up>Registreren</a>
+</div>
         <% include footer.ejs %>
 </body>

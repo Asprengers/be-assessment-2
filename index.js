@@ -21,8 +21,8 @@ var upload = multer({
     dest: 'static/upload/'
 })
 
-var profielfotos = multer({
-    dest: 'static/profielfoto/'
+var uploadprofile = multer({
+  dest:'static/profielfoto/'
 })
 
 express()
@@ -46,7 +46,6 @@ express()
     .get('/editmatch', editmatch)
     .post('/', upload.single('cover'), add)
     .post('/chat/', newmes)
-    .post('/profile/', profielfotos.single('profielfoto'), signup)
     .get('/add', form)
     .get('/newmes/', message)
     .get('/:id', match)
@@ -57,6 +56,7 @@ express()
     .post('/log-in', login)
     .get('/log-out', logout)
     .post('/sign-up', signup)
+    .post('/profile', uploadprofile.single('profielfoto'), signup)
     .delete('/:id', remove)
     .delete('/chat/:id', remover)
     .use(notFound)
@@ -77,37 +77,6 @@ function home(req, res, next) {
 
     }
 
-}
-
-function editmatch(req, res) {
-  var id = req.params.id
-    connection.query('SELECT * FROM overzicht SET ? WHERE ID = ?', done)
-
-    function done(err, data) {
-            res.render('editmatch.ejs', {
-                data: data
-            })
-        }
-
-    }
-function edit (req, res, next){
-  if (!req.session.user) {
-        res.status(401).send('Credentials required')
-        return
-    }
-
-    connection.query('UPDATE overzicht SET ? WHERE ID = ?', {
-      name: req.body.name,
-      cover: req.file ? req.file.filename : null,
-      bio: req.body.bio,
-      book: req.body.book
-    }, done)
-
-      function done(err, data) {
-        res.redirect('/')
-        // data: data[0],
-        // user: req.session.user
-    }
 }
 function match(req, res, next) {
     var id = req.params.id
@@ -135,7 +104,7 @@ function form(req, res) {
     }
 
 }
-function add(req, res, next) {
+function add (req, res, next) {
     if (!req.session.user) {
         res.status(401).send('Credentials required')
         return
@@ -171,6 +140,40 @@ function remove(req, res, next) {
         }
     }
 }
+function editmatch(req, res, next) {
+  var id = req.params.id
+  connection.query('SELECT * FROM overzicht',done)
+     function done(err, data) {
+        if (err) {
+            next(err)
+        } else if (data.length === 0) {
+            next()
+        } else {
+            res.render('editmatch.ejs', {
+                data: data[0],
+                user: req.session.user
+            })
+        }
+      }
+    }
+function edit(req, res, next){
+      var id = req.params.id
+
+       connection.query("UPDATE overzicht SET name = ?, cover = ?, bio = ?, book = ? WHERE id = ?", [req.body.name,req.file ? req.file.filename : null,req.body.bio, req.body.book, id
+       ], done)
+       function done(err, data) {
+           if (err) {
+               next(err)
+           } else if (data.length === 0) {
+               next()
+           } else {
+               res.render('home.ejs', {
+                   data: data[0],
+                   user: req.session.user
+               })
+           }
+       }
+    }
 
 //chat
 function chat(req, res, next) {
@@ -246,7 +249,6 @@ function remover(req, res, next) {
         }
     }
 }
-
 function afterhome(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -337,7 +339,7 @@ function signup(req, res, next) {
                 req.session.user = {
                     gebruikersnaam: gebruikersnaam
                 }
-                res.redirect('/profile/')
+                res.redirect('/profile' + data.insertId)
             }
 
 
@@ -373,7 +375,7 @@ function login(req, res, next) {
                 req.session.user = {
                     gebruikersnaam: user.gebruikersnaam
                 };
-                res.redirect('/')
+                res.redirect('/profile/')
             } else {
                 res.status(401).send('Password incorrect')
             }
@@ -392,21 +394,29 @@ function logout(req, res, next) {
 
 //overig
 function profile(req, res, next) {
-    connection.query('SELECT * FROM profiel', done)
+  // var id = req.params.id
+  connection.query('SELECT * FROM profiel', done)
 
-    function done(err, data) {
-        if (err) {
-            next(err)
-        } else {
-            res.render('profile.ejs', {
-                data: data,
-                user: req.session.user
-            })
-        }
 
-    }
+  function done(err, data) {
+      if (err) {
+          next(err)
+      } else if (data.length === 0) {
+          next()
+      } else {
+          res.render('profile.ejs', {
+              data: data,
+              user: req.session.user
+          })
+      }
+  }
+
 
 }
+
+
+
+
 function search(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -439,3 +449,17 @@ function newmatch(req, res, next) {
     }
 
 }
+
+
+
+// function edit (req, res){
+//   var id = req.params.id
+//    var body = req.body
+//
+//   //function to let a user update their profile
+//     connection.query('UPDATE overzicht SET name = ?, cover = ?, bio = ?, book = ? WHERE id = ?', [body.name, req.file ? req.file.filename : null, body.bio, body.book, id], done)
+
+// if (!req.session.user) {
+//        res.status(401).send('Credentials required')
+//        return
+//    }

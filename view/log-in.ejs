@@ -3,15 +3,9 @@
         <title>Inloggen</title>
         <h1>Inloggen</h1>
         <form action=/log-in method=post>
-            <label>
-   Gebruikersnaam
-    <input name=gebruikersnaam>
-  </label>
-            <label>
-Wachtwoord
-    <input name=wachtwoord type=wachtwoord>
-  </label>
-            <button>Inloggen</button>
+        <label>Gebruikersnaam<input name=gebruikersnaam></label>
+        <label>Wachtwoord<input name=wachtwoord type=password></label>
+        <button>Inloggen</button>
         </form>
         <p> <a class="terug" href="/afterhome"> Terug</a></p>
         <% include footer.ejs %>

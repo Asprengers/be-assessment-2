@@ -1,24 +1,29 @@
 <% include header.ejs %>
     <% include nav.ejs %>
-        <title>
-            <%= data.gebruikersnaam %> - Book A Date</title>
-        <h1>
-            <%= data.gebruikersnaam %>
-        </h1>
-        <div class="feed">
-            <% if (data.profielfoto) { %>
-                <img alt src="/profielfoto/<%= data.profielfoto %>">
-                <% } %>
-                    <p>
-                        <%= data.gebruikersnaam %>
-                    </p>
-                    <% if (user) { %>
+      <% include status.ejs %>
+      <header class="top">
+          <h1>Mijn profiel</h1>
+      </header>
 
-                        <p class="buttons">
-                            <button class="chatbutton"> Chat</button>
-                        </p>
-                        <% } %>
-        </div>
-        <p> <a href="/"> Terug</a></p>
+      <% if (user) { %>
 
+        <p>
+  <% for (var index = 0; index < data.length; index++) { %>
+        <%= data[index].voornaam %>
+        <%= data[index].achternaam %>
+          <%= data[index].email %>
+          <%= data[index].leeftijd %>
+            <%= data[index].minLeeftijd %>
+              <%= data[index].maxLeeftijd %>
+            <%= data[index].geslacht %>
+              <%= data[index].voorkeur %>
+              <% data[index].profielfoto %><img alt src="/profielfoto/<%= data[index].profielfoto %>">  %>
+                  <%= data[index].boek %>
+                    <%= data[index].schrijfer %>
+                      <%= data[index].quote %>
+        <% } %>
+      </p>
+
+
+        <% } %>
         <% include footer.ejs %>

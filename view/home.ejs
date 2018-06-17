@@ -22,12 +22,14 @@
                             <h3>
                                 <%= data[index].bio %>
                             </h3>
+
                         </div>
                         <% } %>
+                        <% if (data.cover) { %>
+                            <img alt src="/upload/<%= data.cover %>">
+                            <% } %>
                 </p>
                 <% } %>
 
-                    <% if (user) { %>
 
-                        <% } %>
                             <% include footer.ejs %>

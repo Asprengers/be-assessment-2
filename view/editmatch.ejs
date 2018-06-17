@@ -2,7 +2,7 @@
     <% include nav.ejs %>
 
 
-      <form action="/edit" method="POST" enctype="multipart/form-data">
+      <form action="/edit" method=post enctype="multipart/form-data">
         <label>Title <input name=name></label>
 
                     <label>
@@ -15,13 +15,14 @@
           </label>
                     <label>
             Description (long)
+
             <textarea
               name=book
               rows=5
             ></textarea>
           </label>
 
-  <input class="submit" type="submit" name="send" value="update">
+          <button>Aanpassen</button>
       </form>
       <p> <a href="/"> Terug</a></p>
        <% include footer.ejs %>
