@@ -43,20 +43,20 @@ express()
     .get('/search', search)
     .get('/newmatch', newmatch)
     .get('/profile', profile)
-    .get('/editmatch', editmatch)
     .post('/', upload.single('cover'), add)
     .post('/chat/', newmes)
     .get('/add', form)
     .get('/newmes/', message)
     .get('/:id', match)
+    .get('/edit', edit)
     .get('/chat/:id', bericht)
-    .post('/edit', edit)
     .get('/sign-up', signupForm)
     .get('/log-in', loginForm)
     .post('/log-in', login)
     .get('/log-out', logout)
     .post('/sign-up', signup)
     .post('/profile', uploadprofile.single('profielfoto'), signup)
+    .post("/updateUser", updateUser)
     .delete('/:id', remove)
     .delete('/chat/:id', remover)
     .use(notFound)
@@ -140,40 +140,7 @@ function remove(req, res, next) {
         }
     }
 }
-function editmatch(req, res, next) {
-  var id = req.params.id
-  connection.query('SELECT * FROM overzicht',done)
-     function done(err, data) {
-        if (err) {
-            next(err)
-        } else if (data.length === 0) {
-            next()
-        } else {
-            res.render('editmatch.ejs', {
-                data: data[0],
-                user: req.session.user
-            })
-        }
-      }
-    }
-function edit(req, res, next){
-      var id = req.params.id
 
-       connection.query("UPDATE overzicht SET name = ?, cover = ?, bio = ?, book = ? WHERE id = ?", [req.body.name,req.file ? req.file.filename : null,req.body.bio, req.body.book, id
-       ], done)
-       function done(err, data) {
-           if (err) {
-               next(err)
-           } else if (data.length === 0) {
-               next()
-           } else {
-               res.render('home.ejs', {
-                   data: data[0],
-                   user: req.session.user
-               })
-           }
-       }
-    }
 
 //chat
 function chat(req, res, next) {
@@ -414,9 +381,6 @@ function profile(req, res, next) {
 
 }
 
-
-
-
 function search(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -450,16 +414,46 @@ function newmatch(req, res, next) {
 
 }
 
+function updateUser(req, res) {
+  var gebruikersnaam = req.body.gebruikersnaam
+  var voornaam = req.body.voornaam
+  var achternaam = req.body.achternaam
+  var email = req.body.email
+  var leeftijd = req.body.leeftijd
+  var minLeeftijd = req.body.minLeeftijd
+  var maxLeeftijd = req.body.maxLeeftijd
+  var geslacht = req.body.geslacht
+  var voorkeur = req.body.voorkeur
+  var profielfoto = req.file ? req.file.filename : null
+  var boek = req.body.boek
+  var schrijfer = req.body.schrijfer
+  var quote = req.body.quote
+  connection.query('UPDATE profiel SET ? WHERE gebruikersnaam = ?', [{
+    voornaam: voornaam,
+    achternaam: achternaam,
+    email: email,
+    leeftijd: leeftijd,
+    minLeeftijd: minLeeftijd,
+    maxLeeftijd: maxLeeftijd,
+    geslacht: geslacht,
+    voorkeur: voorkeur,
+    profielfoto: profielfoto,
+    boek: boek,
+    schrijfer: schrijfer,
+    quote: quote,
+  }, gebruikersnaam], done)
+  function done(err, data) {
+    console.log(data)
+    if (err) {
+      console.error(err)
+    } else {
+      profile(req, res)
+    }
+  }
+}
 
 
-// function edit (req, res){
-//   var id = req.params.id
-//    var body = req.body
-//
-//   //function to let a user update their profile
-//     connection.query('UPDATE overzicht SET name = ?, cover = ?, bio = ?, book = ? WHERE id = ?', [body.name, req.file ? req.file.filename : null, body.bio, body.book, id], done)
+function edit(req, res) {
+  res.render("edit.ejs")
 
-// if (!req.session.user) {
-//        res.status(401).send('Credentials required')
-//        return
-//    }
+  }
