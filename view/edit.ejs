@@ -3,15 +3,18 @@
       <header class="top">
           <h1>edit</h1>
       </header>
+      <% for (var index = 0; index < data.length; index++) { %>
 
 
             <h3>pas hier je gegevens aan</h3>
 
-            <form action="/updateUser" method="post">
+            <form action="/updateUser" method="post" enctype="multipart/form-data">
 
-                <label for="voornaam">naam:</label>
-                <input name="voornaam" type="text">
+              <label>Your name
+                             <input type="text" name="voornaam" value="<%= data[index].voornaam %>" required>
+                         </label>
 
 
                         <button>Aanpassen</button>
                     </form>
+  <% } %>

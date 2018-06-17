@@ -141,7 +141,6 @@ function remove(req, res, next) {
     }
 }
 
-
 //chat
 function chat(req, res, next) {
     connection.query('SELECT * FROM chat', done)
@@ -308,8 +307,6 @@ function signup(req, res, next) {
                 }
                 res.redirect('/profile' + data.insertId)
             }
-
-
         }
     }
 }
@@ -361,9 +358,8 @@ function logout(req, res, next) {
 
 //overig
 function profile(req, res, next) {
-  // var id = req.params.id
+  var id = req.params.id
   connection.query('SELECT * FROM profiel', done)
-
 
   function done(err, data) {
       if (err) {
@@ -379,8 +375,8 @@ function profile(req, res, next) {
   }
 
 
-}
 
+}
 function search(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 
@@ -415,6 +411,7 @@ function newmatch(req, res, next) {
 }
 
 function updateUser(req, res) {
+  var id = req.params.id
   var gebruikersnaam = req.body.gebruikersnaam
   var voornaam = req.body.voornaam
   var achternaam = req.body.achternaam
@@ -428,7 +425,8 @@ function updateUser(req, res) {
   var boek = req.body.boek
   var schrijfer = req.body.schrijfer
   var quote = req.body.quote
-  connection.query('UPDATE profiel SET ? WHERE gebruikersnaam = ?', [{
+  connection.query('UPDATE profiel SET ? WHERE id = ?', [{
+    gebruikersnaam: gebruikersnaam,
     voornaam: voornaam,
     achternaam: achternaam,
     email: email,
@@ -441,19 +439,33 @@ function updateUser(req, res) {
     boek: boek,
     schrijfer: schrijfer,
     quote: quote,
-  }, gebruikersnaam], done)
+  }, id], done)
   function done(err, data) {
     console.log(data)
     if (err) {
       console.error(err)
     } else {
-      profile(req, res)
+    res.redirect('/profile')
     }
   }
-}
 
+  }
 
-function edit(req, res) {
-  res.render("edit.ejs")
+function edit(req, res, next) {
+  var id = req.params.id
+  connection.query('SELECT * FROM profiel', done)
+
+  function done(err, data) {
+      if (err) {
+          next(err)
+      } else if (data.length === 0) {
+          next()
+      } else {
+          res.render('edit.ejs', {
+              data: data,
+              user: req.session.user
+          })
+      }
+  }
 
   }
