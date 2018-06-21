@@ -107,7 +107,7 @@ npm start
 ![](screenshot/match.png)
 ![](screenshot/setup.png)   
 
-##Credits
+## Credits
 [CMDA-BE course 17-18](https://github.com/cmda-be/course-17-18)
 
 [MIT License](https://github.com/Asprengers/be-assessment-2/blob/master/licence.md)  © 2018 [Amy Sprengers](https://github.com/Asprengers)
