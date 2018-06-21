@@ -97,8 +97,8 @@ npm start
 [] display relations
 ```
 ## screenshots
-![](home.png)
-![](feed.png)
-![](match.png)   
+![](screenshot/home.png)
+![](screenshot/feed.png)
+![](screenshot/match.png)   
 
 [MIT License](https://github.com/Asprengers/be-assessment-2/blob/master/licence.md)  © 2018 [Amy Sprengers](https://github.com/Asprengers)
