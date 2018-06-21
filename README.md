@@ -1,6 +1,6 @@
 # Book a date
 
-## over
+## Over
 ```bash
 Book a date is een dating web app die gebaseerd is op de mensen te koppelen die elkaar vinden door middel van hun liefde voor boeken. Door deze web app kunnen mensen elkaar vinden en zo een nieuw hoofdstuk van hun leven laten beginnen.
 ```
@@ -106,5 +106,8 @@ npm start
 ![](screenshot/feed.png)
 ![](screenshot/match.png)
 ![](screenshot/setup.png)   
+
+##Credits
+[CMDA-BE course 17-18](https://github.com/cmda-be/course-17-18)
 
 [MIT License](https://github.com/Asprengers/be-assessment-2/blob/master/licence.md)  © 2018 [Amy Sprengers](https://github.com/Asprengers)
