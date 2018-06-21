@@ -1,15 +1,13 @@
 <% include header.ejs %>
 <% include nav.ejs %>
-        <p>
-            <a href=/add>Add a match</a>
-        </p>
-        <h1>Add a new match</h1>
+
+        <h1>Voeg nieuwe match toe</h1>
         <form action=/ method=post enctype="multipart/form-data">
-            <label>Title <input name=name></label>
-            <label>Cover<input name=cover type=file accept=image/*></label>
-            <label>Plot (short)<input name=bio></label>
-            <label>Description (long)<textarea name=book rows=5></textarea></label>
-            <button>Add</button>
+            <label>Naam <input name=name></label>
+            <label>Profielfoto<input name=cover type=file accept=image/*></label>
+            <label>Bio<input name=bio></label>
+            <label>Favoriete boek<textarea name=book rows=5></textarea></label>
+            <button>Voeg toe</button>
         </form>
         <p> <a href="/"> Terug</a></p>
 <% include footer.ejs %>

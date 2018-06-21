@@ -39,6 +39,7 @@ express()
     .set('views', 'view')
     .get('/afterhome', afterhome)
     .get('/', home)
+    .get('/info', informatie)
     .get('/chat/', chat)
     .get('/search', search)
     .get('/newmatch', newmatch)
@@ -49,6 +50,7 @@ express()
     .get('/newmes/', message)
     .get('/:id', match)
     .get('/edit', edit)
+    .get('/updateUser', updateUser)
     .get('/chat/:id', bericht)
     .get('/sign-up', signupForm)
     .get('/log-in', loginForm)
@@ -56,7 +58,7 @@ express()
     .get('/log-out', logout)
     .post('/sign-up', signup)
     .post('/profile', uploadprofile.single('profielfoto'), signup)
-    .post("/updateUser", updateUser)
+    .post('/updateUser/:id', updateUser)
     .delete('/:id', remove)
     .delete('/chat/:id', remover)
     .use(notFound)
@@ -410,62 +412,34 @@ function newmatch(req, res, next) {
 
 }
 
-function updateUser(req, res) {
+
+function edit(req, res) {
   var id = req.params.id
-  var gebruikersnaam = req.body.gebruikersnaam
-  var voornaam = req.body.voornaam
-  var achternaam = req.body.achternaam
-  var email = req.body.email
-  var leeftijd = req.body.leeftijd
-  var minLeeftijd = req.body.minLeeftijd
-  var maxLeeftijd = req.body.maxLeeftijd
-  var geslacht = req.body.geslacht
-  var voorkeur = req.body.voorkeur
-  var profielfoto = req.file ? req.file.filename : null
-  var boek = req.body.boek
-  var schrijfer = req.body.schrijfer
-  var quote = req.body.quote
-  connection.query('UPDATE profiel SET ? WHERE id = ?', [{
-    gebruikersnaam: gebruikersnaam,
-    voornaam: voornaam,
-    achternaam: achternaam,
-    email: email,
-    leeftijd: leeftijd,
-    minLeeftijd: minLeeftijd,
-    maxLeeftijd: maxLeeftijd,
-    geslacht: geslacht,
-    voorkeur: voorkeur,
-    profielfoto: profielfoto,
-    boek: boek,
-    schrijfer: schrijfer,
-    quote: quote,
-  }, id], done)
-  function done(err, data) {
-    console.log(data)
-    if (err) {
-      console.error(err)
-    } else {
-    res.redirect('/profile')
+  connection.query("SELECT * FROM profiel",
+  function(err, data) {
+      var profiel = {
+              data: data,
+              session: req.session
+              }
+          res.render('edit.ejs', profiel)
+      })
+  }
+
+  function updateUser(req, res) {
+    var id = req.params.id
+    var body = req.body
+    connection.query("UPDATE profiel SET voornaam = ? WHERE id = ?", [body.voornaam, id], done)
+
+    function done(err, data) {
+      if (err) throw err
+      console.log("Inserted!")
+      var profiel = {
+        data: data,
+        session: req.session
+      }
+      res.redirect("/profile/" + req.session.user.id)
     }
   }
-
-  }
-
-function edit(req, res, next) {
-  var id = req.params.id
-  connection.query('SELECT * FROM profiel', done)
-
-  function done(err, data) {
-      if (err) {
-          next(err)
-      } else if (data.length === 0) {
-          next()
-      } else {
-          res.render('edit.ejs', {
-              data: data,
-              user: req.session.user
-          })
-      }
-  }
-
+  function informatie(req, res) {
+      res.render('info.ejs')
   }

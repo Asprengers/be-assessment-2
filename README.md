@@ -30,26 +30,38 @@ cd be-assessment-2
 3. Mysql -u root -p (enter your password)
 4. CREATE DATABASE IF NOT EXISTS matches;
 5. USE matches;
-6. CREATE TABLE IF NOT EXISTS overzicht (
-  id INT NOT NULL AUTO_INCREMENT,
-  name TEXT CHARACTER SET utf8,
-  cover TEXT CHARACTER SET utf8,
-  bio TEXT CHARACTER SET utf8,
-  book TEXT CHARACTER SET utf8,
-  PRIMARY KEY (id)
-);
-7. CREATE TABLE IF NOT EXISTS users (
-  id INT NOT NULL AUTO_INCREMENT,
-  username TEXT CHARACTER SET utf8,
-  hash TEXT CHARACTER SET utf8,
-  PRIMARY KEY (id)
-);
-8. CREATE TABLE IF NOT EXISTS chat (
-  id INT NOT NULL AUTO_INCREMENT,
-  Subject TEXT CHARACTER SET utf8,
-  message TEXT CHARACTER SET utf8,
-  PRIMARY KEY (id)
-);
+6. CREATE TABLE `overzicht` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cover` text,
+  `name` text,
+  `bio` text,
+  `book` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+7. CREATE TABLE `profiel` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `gebruikersnaam` text,
+  `hash` text,
+  `email` text,
+  `voornaam` text,
+  `achternaam` text,
+  `leeftijd` text,
+  `minLeeftijd` text,
+  `maxLeeftijd` text,
+  `geslacht` text,
+  `voorkeur` text,
+  `profielfoto` text,
+  `boek` text,
+  `schrijfer` text,
+  `quote` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+8. CREATE TABLE `chat` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `Subject` text,
+  `message` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 9. touch .env
 10. echo "DB_HOST=yourhost
 DB_USER=youruser
@@ -72,17 +84,21 @@ npm start
 [x] user can log out
 [x] user can stay logged in through sessions
 [x] files can be uploaded
+[x] display profiles
+[x] chat function
+[x] add register to profile
 [] add structure
 [] code style is consistent
 [] document the code
 [] update css
 [] edit function CRUD
 [] match function (filteren. Een minimale filter is een filter op geslacht en voorkeur van het profiel. (ander.geslacht==mijn.voorkeurmv && ander.voorkeurmv==mijn.geslacht))
-[] add register to profile
-[] chat function
 [] search function
-[] display profiles
 [] display relations
 ```
+## screenshots
+![](home.png)
+![](feed.png)
+![](match.png)   
 
 [MIT License](https://github.com/Asprengers/be-assessment-2/blob/master/licence.md)  © 2018 [Amy Sprengers](https://github.com/Asprengers)

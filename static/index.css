@@ -145,13 +145,13 @@ input[name=username] {
     font-size: 1em;
 }
 
-input[type=password] {
+/* input[type=password] {
     width: 22em;
     padding: 0.750em;
     border-radius: 0.750em;
     line-height: normal;
     font-size: 1em;
-}
+} */
 
 .terug {
     border-style: none;
@@ -289,6 +289,14 @@ nav a.active {
     margin-left: 45px;
 }
 
+.feed1 {
+    /*    position: absolute;*/
+    /*    width: 100%;*/
+    /*    left: 45px;*/
+    border: 3px solid #D4AF37;
+    height: 500px;
+    margin-left: 45px;
+}
 .feed > h2,
 h3 {
     color: black;
@@ -478,4 +486,94 @@ input[type=checkbox] {
     -webkit-appearance: checkbox;
 }
 
-/*tot hier*/
+@media screen and (min-width: 35em) {
+
+
+    nav {
+        background-image: url(../images/cover.jpg);
+        margin: 0;
+        left: 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding-top: 0px;
+        margin-top: -20px;
+        padding-bottom: -0px;
+        box-shadow: 0 0.250em 0.500em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.250em 0 rgba(0, 0, 0, 0.19);
+        z-index: 1;
+
+    }
+
+    nav img {
+        box-shadow: 0 0.250em 0.500em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.250em 0 rgba(0, 0, 0, 0.19);
+        width: 50px;
+        background-color: #dddddd;
+        /*        border: none;*/
+        /*    color: white;*/
+        padding: 10px 13px;
+        /*        font-size: 16px;*/
+        /*    cursor: pointer;*/
+        /*    margin: 4px;*/
+        margin-left: 70px;
+        /*    margin-bottom: 0px;*/
+    }
+
+    nav > a:nth-of-type(3n) img {
+        width: 70px;
+        margin-top: -14px;
+
+    }
+
+    nav a.active {
+        background-color: #D4AF37;
+        /*    width: 30px;*/
+        color: white;
+        padding-right: 10px;
+    }
+
+
+}
+
+@media screen and (min-width: 48em) {
+
+
+
+
+    nav {
+        background-image: url(../images/cover.jpg);
+        margin: 0;
+        left: 0;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        padding-top: 0px;
+        margin-top: -20px;
+        padding-bottom: -0px;
+        box-shadow: 0 0.250em 0.500em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.250em 0 rgba(0, 0, 0, 0.19);
+        z-index: 1;
+
+    }
+
+    nav img {
+        box-shadow: 0 0.250em 0.500em 0 rgba(0, 0, 0, 0.2), 0 0.375em 1.250em 0 rgba(0, 0, 0, 0.19);
+        width: 50px;
+        background-color: #dddddd;
+        /*        border: none;*/
+        /*    color: white;*/
+        padding: 10px 13px;
+        /*        font-size: 16px;*/
+        /*    cursor: pointer;*/
+        /*    margin: 4px;*/
+        margin-left: 160px;
+        /*    margin-bottom: 0px;*/
+    }
+
+    nav > a:nth-of-type(3n) img {
+        width: 70px;
+        margin-top: -14px;
+
+    }
+
+
+
+}

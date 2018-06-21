@@ -8,7 +8,7 @@
 
             <h3>pas hier je gegevens aan</h3>
 
-            <form action="/updateUser" method="post" enctype="multipart/form-data">
+            <form action="/updateUser/<%=session.user.id %>" method="post" enctype="multipart/form-data">
 
               <label>Your name
                              <input type="text" name="voornaam" value="<%= data[index].voornaam %>" required>
