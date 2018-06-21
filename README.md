@@ -1,5 +1,9 @@
 # Book a date
 
+## over
+```bash
+Book a date is een dating web app die gebaseerd is op de mensen te koppelen die elkaar vinden door middel van hun liefde voor boeken. Door deze web app kunnen mensen elkaar vinden en zo een nieuw hoofdstuk van hun leven laten beginnen.
+```
 ## 1. Before installing
 
 * install [NodeJS](https://nodejs.org/en/download/)
@@ -68,6 +72,8 @@ DB_USER=youruser
 DB_NAME=namedatabase
 DB_PASSWORD=mypassword
 SESSION_SECRET=yoursecret" >> .env
+
+![](screenshot/database.png)
 ```
 
 ## 4. Start
@@ -96,9 +102,11 @@ npm start
 [] search function
 [] display relations
 ```
-## screenshots
+
+## Screenshots
 ![](screenshot/home.png)
 ![](screenshot/feed.png)
-![](screenshot/match.png)   
+![](screenshot/match.png)
+![](screenshot/setup.png)   
 
 [MIT License](https://github.com/Asprengers/be-assessment-2/blob/master/licence.md)  © 2018 [Amy Sprengers](https://github.com/Asprengers)
