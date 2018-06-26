@@ -101,7 +101,7 @@ npm start
 I found the slides very helpful.
 
 ## Screenshots
-![](screenshot/home.png =150 )
+![](screenshot/home.png =250x250)
 ![](screenshot/feed.png =150 )
 ![](screenshot/match.png =150 )
 ![](screenshot/setup.png)   
