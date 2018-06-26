@@ -91,14 +91,14 @@ npm start
 * [x] display profiles
 * [x] chat function
 * [x] add register to profile
-[ ] add structure
-[ ] code style is consistent
-[ ] document the code
-[ ] update css
-[ ] edit function CRUD
-[ ] match function (filteren.))
-[ ] search function
-[ ] display relations
+* [ ] add structure
+* [ ] code style is consistent
+* [ ] document the code
+* [ ] update css
+* [ ] edit function CRUD
+* [ ] match function (filteren.))
+* [ ] search function
+* [ ] display relations
 
 
 ## 6. What I have learned
