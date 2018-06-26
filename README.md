@@ -1,9 +1,9 @@
 # Book a date
 
 ## Over
-```bash
-Book a date is een dating web app die gebaseerd is op de mensen te koppelen die elkaar vinden door middel van hun liefde voor boeken. Door deze web app kunnen mensen elkaar vinden en zo een nieuw hoofdstuk van hun leven laten beginnen.
-```
+
+> Book a date is een dating web app die gebaseerd is op de mensen te koppelen die elkaar vinden door middel van hun liefde voor boeken. Door deze web app kunnen mensen elkaar vinden en zo een nieuw hoofdstuk van hun leven laten beginnen.
+
 ## 1. Before installing
 
 * install [NodeJS](https://nodejs.org/en/download/)
