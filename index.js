@@ -307,8 +307,10 @@ function signup(req, res, next) {
                 req.session.user = {
                     gebruikersnaam: gebruikersnaam
                 }
-                res.redirect('/profile' + data.insertId)
+                res.redirect('/profile/')
             }
+
+
         }
     }
 }
@@ -361,24 +363,22 @@ function logout(req, res, next) {
 //overig
 function profile(req, res, next) {
   var id = req.params.id
-  connection.query('SELECT * FROM profiel', done)
+    connection.query('SELECT * FROM profiel', done)
 
-  function done(err, data) {
-      if (err) {
-          next(err)
-      } else if (data.length === 0) {
-          next()
-      } else {
-          res.render('profile.ejs', {
-              data: data,
-              user: req.session.user
-          })
-      }
-  }
-
-
-
+    function done(err, data) {
+        if (err) {
+            next(err)
+       } else if (data.length === 0) {
+           next()
+       } else {
+           res.render('profile.ejs', {
+               data: data,
+               user: req.session.user
+           })
+       }
+    }
 }
+
 function search(req, res, next) {
     connection.query('SELECT * FROM overzicht', done)
 

@@ -81,8 +81,8 @@ npm start
 ```
 
 ## 5. To list
-```bash
-[x] git npm database node are used
+
+* [x] git npm database node are used
 [x] user can sign up
 [x] user can log in
 [x] user can log out
@@ -91,16 +91,21 @@ npm start
 [x] display profiles
 [x] chat function
 [x] add register to profile
-[] add structure
+[ ] add structure
 [] code style is consistent
 [] document the code
 [] update css
 [] edit function CRUD
-[] match function (filteren. Een minimale filter is een filter op geslacht en voorkeur van het profiel. (ander.geslacht==mijn.voorkeurmv && ander.voorkeurmv==mijn.geslacht))
+[] match function (filteren.))
 [] search function
 [] display relations
-```
 
+
+## 6. What I have learned
+```bash
+Before this course started I had no idea what I was doing but after a while I slowely started to understand how things worked.
+I found the slides very helpful.
+```
 ## Screenshots
 ![](screenshot/home.png)
 ![](screenshot/feed.png)
