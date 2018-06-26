@@ -101,11 +101,11 @@ npm start
 I found the slides very helpful.
 
 ## Screenshots
-![](screenshot/home.png){:height="50%" width="50%"}
+<!-- ![](screenshot/home.png){:height="50%" width="50%"}
 ![](screenshot/feed.png =150 )
 ![](screenshot/match.png =150 )
-![](screenshot/setup.png)   
-<img src="screenshot/setup.png" width="400" height="790">
+![](screenshot/setup.png)    -->
+<img src="screenshot/home.png" width="100" height="300">
 
 ## Credits
 [CMDA-BE course 17-18](https://github.com/cmda-be/course-17-18)
