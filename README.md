@@ -1,11 +1,9 @@
 # Book a date
-
+![](screenshot/slide.png)
 ## Over
-
 > Book a date is een dating web app die gebaseerd is op de mensen te koppelen die elkaar vinden door middel van hun liefde voor boeken. Door deze web app kunnen mensen elkaar vinden en zo een nieuw hoofdstuk van hun leven laten beginnen.
 
 ## 1. Before installing
-
 * install [NodeJS](https://nodejs.org/en/download/)
 * install [mysql](https://dev.mysql.com/)
 * $ brew install mysql
@@ -20,14 +18,12 @@
 * $ npm install express-session
 
 ## 2. Install
-
 ``` bash
 git clone https://github.com/Asprengers/be-assessment-2.git
 cd be-assessment-2
 
 ```
 ## 3. Database setup
-
 ``` bash
 1. Brew install mysql
 2. Brew services start mysql
@@ -81,7 +77,6 @@ npm start
 ```
 
 ## 5. To list
-
 * [x] git npm database node are used
 * [x] user can sign up
 * [x] user can log in
@@ -102,10 +97,9 @@ npm start
 
 
 ## 6. What I have learned
-```bash
-Before this course started I had no idea what I was doing but after a while I slowely started to understand how things worked.
+> Before this course started I had no idea what I was doing but after a while I slowly started to understand how things worked.
 I found the slides very helpful.
-```
+
 ## Screenshots
 ![](screenshot/home.png)
 ![](screenshot/feed.png)
