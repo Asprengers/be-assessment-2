@@ -83,22 +83,22 @@ npm start
 ## 5. To list
 
 * [x] git npm database node are used
-[x] user can sign up
-[x] user can log in
-[x] user can log out
-[x] user can stay logged in through sessions
-[x] files can be uploaded
-[x] display profiles
-[x] chat function
-[x] add register to profile
+* [x] user can sign up
+* [x] user can log in
+* [x] user can log out
+* [x] user can stay logged in through sessions
+* [x] files can be uploaded
+* [x] display profiles
+* [x] chat function
+* [x] add register to profile
 [ ] add structure
-[] code style is consistent
-[] document the code
-[] update css
-[] edit function CRUD
-[] match function (filteren.))
-[] search function
-[] display relations
+[ ] code style is consistent
+[ ] document the code
+[ ] update css
+[ ] edit function CRUD
+[ ] match function (filteren.))
+[ ] search function
+[ ] display relations
 
 
 ## 6. What I have learned
