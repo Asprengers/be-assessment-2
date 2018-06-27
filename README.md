@@ -34,8 +34,7 @@ cd be-assessment-2
 3. Mysql -u root -p (enter your password)
 4. CREATE DATABASE IF NOT EXISTS matches;
 5. USE matches;
-6. ```bash
-CREATE TABLE `overzicht` (
+6. CREATE TABLE `overzicht` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cover` text,
   `name` text,
@@ -43,10 +42,7 @@ CREATE TABLE `overzicht` (
   `book` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
-```
-
-7. ```bash
-CREATE TABLE `profiel` (
+7. CREATE TABLE `profiel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gebruikersnaam` text,
   `hash` text,
@@ -64,15 +60,12 @@ CREATE TABLE `profiel` (
   `quote` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
-```
-8. ```bash
-CREATE TABLE `chat` (
+8. CREATE TABLE `chat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Subject` text,
   `message` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
-```
 9. touch .env
 10. echo "DB_HOST=yourhost
 DB_USER=youruser
