@@ -34,14 +34,16 @@ cd be-assessment-2
 3. Mysql -u root -p (enter your password)
 4. CREATE DATABASE IF NOT EXISTS matches;
 5. USE matches;
-6. CREATE TABLE `overzicht` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cover` text,
-  `name` text,
-  `bio` text,
-  `book` text,
-  PRIMARY KEY (`id`)
+6. ```bash
+CREATE TABLE overzicht (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  cover text,
+  name text,
+  bio text,
+  book text,
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+```
 7. CREATE TABLE `profiel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gebruikersnaam` text,
