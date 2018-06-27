@@ -36,7 +36,7 @@ cd be-assessment-2
 5. USE matches;
 6.
 ```bash
-CREATE TABLE overzicht (
+6. CREATE TABLE overzicht (
   id int(11) NOT NULL AUTO_INCREMENT,
   cover text,
   name text,
