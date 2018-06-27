@@ -4,7 +4,7 @@
 
 ## Over
 
-> Book a date is een dating web app die gebaseerd is op de mensen te koppelen die elkaar vinden door middel van hun liefde voor boeken. Door deze web app kunnen mensen elkaar vinden en zo een nieuw hoofdstuk van hun leven laten beginnen.
+> Book A Data is a dating web app that is based on, how to connect strangers with each other, by sharing the same interests for books. In this web app, people are be able to find each other and start a new chapter of their live.  
 
 ## 1. Before installing
 
