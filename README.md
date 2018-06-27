@@ -72,11 +72,14 @@ CREATE TABLE overzicht (
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 ```
 7. touch .env
-8. echo "DB_HOST=yourhost
+8. echo >> .env:
+```bash
+"DB_HOST=yourhost
 DB_USER=youruser
 DB_NAME=namedatabase
 DB_PASSWORD=mypassword
-SESSION_SECRET=yoursecret" >> .env
+SESSION_SECRET=yoursecret"
+```
 
 ![](screenshot/database.png)
 
