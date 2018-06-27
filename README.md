@@ -78,15 +78,14 @@ DB_NAME=namedatabase
 DB_PASSWORD=mypassword
 SESSION_SECRET=yoursecret" >> .env
 
-
 ![](screenshot/database.png)
 
 ## 4. Start
 
-```bash
+To start type into terminal:
 npm install
 npm start
-```
+
 
 ## 5. To list
 
