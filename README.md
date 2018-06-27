@@ -123,6 +123,10 @@ I found the slides very helpful.
 ![](screenshot/match.png =150 )
 ![](screenshot/setup.png)    -->
 <img src="screenshot/home.png" width="200" height="300">
+<img src="screenshot/feed.png" width="200" height="300">
+<img src="screenshot/match.png" width="200" height="300">
+
+
 
 ## Credits
 
