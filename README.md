@@ -79,7 +79,7 @@ DB_USER=youruser
 DB_NAME=namedatabase
 DB_PASSWORD=mypassword
 SESSION_SECRET=yoursecret" >> .env
-```
+
 
 ![](screenshot/database.png)
 
