@@ -122,9 +122,12 @@ I found the slides very helpful.
 ![](screenshot/feed.png =150 )
 ![](screenshot/match.png =150 )
 ![](screenshot/setup.png)    -->
-<img src="screenshot/home.png" width="200" height="300">
-<img src="screenshot/feed.png" width="200" height="300">
-<img src="screenshot/match.png" width="200" height="300">
+
+| Left-aligned | Center-aligned | Right-aligned |
+| :---         |     :---:      |          ---: |
+| <img src="screenshot/home.png" width="200" height="300">   | <img src="screenshot/feed.png" width="200" height="300">
+     | <img src="screenshot/match.png" width="200" height="300">
+  |
 
 
 
