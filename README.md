@@ -1,9 +1,14 @@
 # Book a date
+
 ![](screenshot/slide.png)
+
 ## Over
+
 > Book a date is een dating web app die gebaseerd is op de mensen te koppelen die elkaar vinden door middel van hun liefde voor boeken. Door deze web app kunnen mensen elkaar vinden en zo een nieuw hoofdstuk van hun leven laten beginnen.
 
 ## 1. Before installing
+
+``` bash
 * install [NodeJS](https://nodejs.org/en/download/)
 * install [mysql](https://dev.mysql.com/)
 * $ brew install mysql
@@ -16,21 +21,22 @@
 * $ npm install multer
 * $ npm install argon2
 * $ npm install express-session
+```
 
 ## 2. Install
-``` bash
 git clone https://github.com/Asprengers/be-assessment-2.git
 cd be-assessment-2
 
-```
 ## 3. Database setup
-``` bash
+
 1. Brew install mysql
 2. Brew services start mysql
 3. Mysql -u root -p (enter your password)
 4. CREATE DATABASE IF NOT EXISTS matches;
 5. USE matches;
-6. CREATE TABLE `overzicht` (
+6.
+```bash
+CREATE TABLE `overzicht` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cover` text,
   `name` text,
@@ -38,6 +44,7 @@ cd be-assessment-2
   `book` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
+```
 7. CREATE TABLE `profiel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `gebruikersnaam` text,
@@ -69,14 +76,18 @@ DB_NAME=namedatabase
 DB_PASSWORD=mypassword
 SESSION_SECRET=yoursecret" >> .env
 ```
+
 ![](screenshot/database.png)
+
 ## 4. Start
+
 ```bash
 npm install
 npm start
 ```
 
 ## 5. To list
+
 * [x] git npm database node are used
 * [x] user can sign up
 * [x] user can log in
@@ -97,10 +108,12 @@ npm start
 
 
 ## 6. What I have learned
+
 > Before this course started I had no idea what I was doing but after a while I slowly started to understand how things worked.
 I found the slides very helpful.
 
 ## Screenshots
+
 <!-- ![](screenshot/home.png){:height="50%" width="50%"}
 ![](screenshot/feed.png =150 )
 ![](screenshot/match.png =150 )
@@ -108,6 +121,7 @@ I found the slides very helpful.
 <img src="screenshot/home.png" width="200" height="300">
 
 ## Credits
+
 [CMDA-BE course 17-18](https://github.com/cmda-be/course-17-18)
 
 [MIT License](https://github.com/Asprengers/be-assessment-2/blob/master/licence.md)  © 2018 [Amy Sprengers](https://github.com/Asprengers)
