@@ -34,9 +34,9 @@ cd be-assessment-2
 3. Mysql -u root -p (enter your password)
 4. CREATE DATABASE IF NOT EXISTS matches;
 5. USE matches;
-6.
+6. Add in database matches:
 ```bash
-6. CREATE TABLE overzicht (
+CREATE TABLE overzicht (
   id int(11) NOT NULL AUTO_INCREMENT,
   cover text,
   name text,
@@ -44,34 +44,35 @@ cd be-assessment-2
   book text,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
-```
 
-7. CREATE TABLE `profiel` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `gebruikersnaam` text,
-  `hash` text,
-  `email` text,
-  `voornaam` text,
-  `achternaam` text,
-  `leeftijd` text,
-  `minLeeftijd` text,
-  `maxLeeftijd` text,
-  `geslacht` text,
-  `voorkeur` text,
-  `profielfoto` text,
-  `boek` text,
-  `schrijfer` text,
-  `quote` text,
-  PRIMARY KEY (`id`)
+ CREATE TABLE profiel (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  gebruikersnaam text,
+  hash text,
+  email text,
+  voornaam text,
+  achternaam text,
+  leeftijd text,
+  minLeeftijd text,
+  maxLeeftijd text,
+  geslacht text,
+  voorkeur text,
+  profielfoto text,
+  boek text,
+  schrijfer text,
+  quote text,
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
-8. CREATE TABLE `chat` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `Subject` text,
-  `message` text,
-  PRIMARY KEY (`id`)
+
+ CREATE TABLE chat (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  Subject text,
+  message text,
+  PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
-9. touch .env
-10. echo "DB_HOST=yourhost
+```
+7. touch .env
+8. echo "DB_HOST=yourhost
 DB_USER=youruser
 DB_NAME=namedatabase
 DB_PASSWORD=mypassword
